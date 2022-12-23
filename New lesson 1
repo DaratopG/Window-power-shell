@@ -1,0 +1,16 @@
+%   -> ForEach-Object
+?   -> Where-Object
+ac   -> Add-Content
+asnp   -> Add-PSSnapin
+cat   -> Get-Content
+cd   -> Set-Location
+CFS   -> ConvertFron-String
+chdir   -> Set-Location
+clc   -> Clear-Content
+clear   -> Clear-Host
+clhy   -> Clear-History
+cli   -> Clear-Item
+clp   -> Clear-Itemproperly
+cls   -> Clear-Host
+clv   -> Clear-variable
+cnsn   -> Connect-PSSesion
