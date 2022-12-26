@@ -1,0 +1,16 @@
+compare -> Compare-Object
+copy -> Copy-Item
+cp -> Copy-Item
+cpi -> Copy-Item
+cpp -> Copy-ItemProperty
+curl -> Invoke-WebRequest
+cvpa -> Convert-Path
+dbp -> Disable-PSBreakpoint
+del -> Remove-Item
+diff -> Compare-Object
+dir -> Get-ChildItem
+dnsn -> Disconnect-PSSession
+ebp -> Enable-PSBreakpoint
+echo -> Write-Output
+epal -> Export-Alias
+epcsv -> Export-Csv
