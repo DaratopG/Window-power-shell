@@ -1,0 +1,16 @@
+epsn -> Export-PSSession
+erase -> Remove-Item
+etsn -> Enter-PSSession
+exsn -> Exit-PSSession
+fc -> Format-Custom
+fhx -> Format-Hex                                  3.1.0.0    Microsoft.PowerShell.Utility
+fl -> Format-List
+foreach -> ForEach-Object
+ft -> Format-Table
+fw -> Format-Wide
+gal -> Get-Alias
+gbp -> Get-PSBreakpoint
+gc -> Get-Content
+gci -> Get-ChildItem
+gcm -> Get-Command
+gcs -> Get-PSCallStack
