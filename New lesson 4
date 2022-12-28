@@ -1,0 +1,16 @@
+gdr -> Get-PSDrive
+ghy -> Get-History
+gi -> Get-Item
+gjb -> Get-Job
+gl -> Get-Location
+gm -> Get-Member
+gmo -> Get-Module
+gp -> Get-ItemProperty
+gps -> Get-Process
+gpv -> Get-ItemPropertyValue
+group -> Group-Object
+gsn -> Get-PSSession
+gsnp -> Get-PSSnapin
+gsv -> Get-Service
+gu -> Get-Unique
+gv -> Get-Variable
