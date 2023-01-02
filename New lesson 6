@@ -1,0 +1,17 @@
+ls
+dir
+Get-Help Select-Object
+Get-Help Get-Help
+Get-Command
+Get-Help Get-Help *printer*
+Get-Command *printer*
+Get-ChildItem
+Get-ChildItem | Select-Object
+Get-ChildItem | Select-Object Name
+Get-ChildItem | Select -First 1
+(Get-ChildItem | Select -First 1).Name
+(Get-ChildItem | Select -First 1).Tostring()
+Get-ChildItem | Select -Last 1
+Get-ChildItem | Select -Index 0
+Get-ChildItem | Select -Index 0 | Sellect-Object Name
+Get-ChildItem | Select -Index 0 | Get-Member
