@@ -1,0 +1,27 @@
+# Load required assemble
+[viod] [system.Reflection.Assemble]::LoadWithPartail Name("System.Window.Form")
+
+# Drawing Form and controls
+$Form_HelloWorld = New-Object System.Window.Forms.Form
+    $Form_HelloWorld.Text = "Hello World"
+    $Form_HelloWorld.Size = Mew-Object System.Drawing.Size(272,160)
+    $Form_HelloWorld.FormBorderStyle = "FixedDialog"
+    $Form_HelloWorld.TopMost = $true
+    $Form_HelloWorld.MaximizeBox = $false
+    $Form_HelloWorld.MinimizeBox = $false
+    $Form_HelloWorld.ControlsBox = $true
+    $Form_HelloWorld.Startposition = "CenterScreen"
+    $Form_HelloWorld.Font = "Segoe UI"
+    
+# adding a label to my form
+$label_HelloWorld = New-Object System.Window.Forms.Label
+    $label_HelloWorld.Location = New-Object System.Window.Forms.Drawing.Size(8,8)
+    $label_HelloWorld.Size = New-Object System.Drawing.Size(240,32)
+    $label_HelloWorld.TextAlign = "MiddleCenter"
+    $label_HelloWorld.Text = "Hello World"
+    $Form_HelloWorld.Controls.Add ($label_HelloWorld)
+
+
+# Show form
+$Form_HelloWorld.Add_Shown ({$Form_HelloWorld.Activate()})
+[viod] $Form_HelloWorld.ShowDialog()
