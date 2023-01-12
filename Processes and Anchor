@@ -1,0 +1,94 @@
+# Load required assemblies
+[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+
+Function GetProcesses{
+
+    $listview_processes.Item.Clear()
+    $listview_processes.Colums.Clear()
+
+    $Processes = Get-Process | Select Id,ProcessName,Handles,NPM,PM,CPU,Path
+
+    $ProcessProperties = $Processes[0].psObject.Properties
+
+    $ProcessProperties | ForEach-Object {
+        $listview_processes.Colums.Add("$($_.Name)") | Out-Null
+    }
+
+    Foreach ($Process in $Processes){
+    
+        $ProcessListviewItem = New-Object System.Windows.Forms.ListViewItem($Process.Id)
+
+        $Process.psObjest.Properties | Where {$_.Name -ne "Id"} | ForEach-Object {
+            $ColumnName = $_.Name
+            $ProcessListviewItem.Add("$($Process.$ColumnName)") | Out-Null
+        }
+
+        $listview_process.Items.Add($ProcessListviewItem) | Out-Null
+    
+    }
+
+    $listview_processes.AutoResizeColumns("HeaderSize")
+
+}
+
+# Drawing form and controls
+$Form_HelloWorld = New-Object System.Windows.Forms.Form
+    $Form_HelloWorld.Text = "Process Manager"
+    $Form_HelloWorld.Size = New-Object System.Drawing.Size(832,528)
+    $Form_HelloWorld.FormBorderStyle = "FixedDialog"
+    $Form_HelloWorld.TopMost = $false
+    $Form_HelloWorld.MaximizeBox = $true
+    $Form_HelloWorld.MinimizeBox = $true
+    $Form_HelloWorld.ControlsBox = $true
+    $Form_HelloWorld.Startposition = "CenterScreen"
+    $Form_HelloWorld.Font = "Segoe UI"
+    
+# adding a label to my form
+$label_HelloWorld = New-Object System.Windows.Forms.Label
+    $label_HelloWorld.Location = New-Object System.Window.Forms.Drawing.Size(8,450)
+    $label_HelloWorld.Size = New-Object System.Drawing.Size(240,32)
+    $label_HelloWorld.TextAlign = "MiddleLeft"
+    $label_HelloWorld.Text = "Process List:"
+    $Form_HelloWorld.Controls.Add($label_HelloWorld)
+
+# add a listview
+
+$listview_process = New-Object System.Windows.Forms.ListView
+    $listview_process.Location = New-Object System.Drwaing.Size(568,450)
+    $listview_process.Size = New-Object System.Drwaing.Size(800,402)
+    $listview_process.Anchor = [System.Windows.Forms.AnchorStyles]::Bottom -bor
+    [System.Windows.Forms.AnchorStyles]::Left -bor
+    [System.Windows.Forms.AnchorStyles]::Right -bor
+    [System.Windows.Forms.AnchorStyles]::Top 
+    $listview_process.View = "Details"
+    $listview_process.FullRowSellect = $true
+    $listview_process.MultiSellect = $true
+    $listview_process.AllowCollumReorder = $true
+    $listview_process.GrideLines = $true
+    $Form_HelloWorld.Controls.Add($listview_processes)
+
+# adding a button
+$Button_ClickMe = New-Object System.Windows.button
+    $Button_ClickMe.Location = New-Object System.Drawing.Size(8.80)
+    $Button_ClickMe.Size = New-Object System.Drawing.Size(240.32)
+    $Button_ClickMe.TextAlign = "MiddleCenter"
+    $Button_ClickMe.Text = "Refresh Process List"
+    $Button_ClickMe. Add_Click({
+        GetProcesses
+    })
+    $Form_HelloEorld.Controls.Add($button_ClickMe)
+
+# adding a button
+$Button_EndProcess = New-Object System.Windows.button
+    $Button_EndProcess.Location = New-Object System.Drawing.Size(8.80)
+    $Button_EndProcess.Size = New-Object System.Drawing.Size(240.32)
+    $Button_EndProcess.TextAlign = "MiddleCenter"
+    $Button_EndProcess.Text = "End Selected Process(es)"
+    $Button_EndProcess.Add_Click({
+
+    })
+    $Form_HelloEorld.Controls.Add($button_ClickMe)
+
+# Show form
+$Form_HelloWorld.Add_Shown({$Form_HelloWorld.Activate()})
+[void] $Form_HelloWorld.ShowDialog()
